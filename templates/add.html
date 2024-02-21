@@ -1,24 +1,21 @@
-{% extends 'bootstrap/base.html' %}
-{% import "bootstrap/wtf.html" as wtf %}
-
-{% block styles %}
-{{ super() }}
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-{% endblock %}
-
-{% block title %}Add Listing{% endblock %}
-
+{% from "bootstrap5/form.html" import render_form %}
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-8">
+{% include "header.html" %}
 
-      <h1>Add a new home into the database</h1>
 
-      {{ wtf.quick_form(form, novalidate=True) }}
+  <main class="mb-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
 
+        <h1>Add a new home into the database</h1>
+
+        {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </main>
 
+{% include "footer.html" %}
 {% endblock %}

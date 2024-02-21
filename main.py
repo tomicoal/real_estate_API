@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect, send_from_directory
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, IntegerField, SelectField
@@ -15,7 +15,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 # db.init_app(app)
 app.app_context().push()
-Bootstrap(app)
+Bootstrap5(app)
 
 
 # #CREATE TABLE IN DB
@@ -32,6 +32,7 @@ class Listings(db.Model):
 # Line below only required once, when creating DB.
 # with app.app_context():
 #     db.create_all()
+
 
 # Already created to initialize DB so we comment out
 # new_listing = Listings(
@@ -52,32 +53,30 @@ class CreateListingForm(FlaskForm):
     type = SelectField("Type", choices=[("flat", "Flat"), ("house", "House")], validators=[DataRequired()])
     rooms = IntegerField("Rooms", validators=[DataRequired()])
     baths = IntegerField("Baths", validators=[DataRequired()])
-    link = StringField("Blog content", validators=[DataRequired(), URL()])
+    link = StringField("URL", validators=[DataRequired(), URL()])
     price = IntegerField("Price", validators=[DataRequired()])
     submit = SubmitField("Submit Listing")
-
 
 
 @app.route("/")
 def home():
     result = db.session.execute(db.select(Listings).order_by(Listings.price))
     all_listings = result.scalars().all()
-
-    db.session.commit()
-
     return render_template("index.html", listings=all_listings)
 
 
 @app.route("/add", methods=["GET", "POST"])
-def add():
+def add_listing():
     form = CreateListingForm()
     if form.validate_on_submit():
-        address = form.address.data
-        type = form.type.data
-        rooms = form.rooms.data
-        baths = form.baths.data
-        link = form.link.data
-        price = form.price.data
+        listing = Listings(
+            address=form.address.data,
+            type=form.type.data,
+            rooms=form.rooms.data,
+            baths=form.baths.data,
+            link=form.link.data,
+            price=form.price.data)
+        db.session.add(listing)
         db.session.commit()
         return redirect(url_for('home'))
     return render_template("add.html", form=form)
