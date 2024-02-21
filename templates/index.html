@@ -2,6 +2,7 @@
 <!-- Page Header-->
 <header
   class="masthead"
+  style="background-image: url('../static/assets/img/home-bg.jpg')"
 >
 
   <div class="container position-relative px-4 px-lg-5">
@@ -9,7 +10,6 @@
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="site-heading">
           <h1>Homes list</h1>
-          <span class="subheading">A list</span>
         </div>
       </div>
     </div>
@@ -19,18 +19,18 @@
 <div class="container px-4 px-lg-5">
   <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
-      <!-- Post preview-->
+      <!-- Listing preview-->
       {% for listings in all_listings %}
-      <div class="post-preview">
-        <a href="{{ url_for('show_post', post_id=post.id) }}">
-          <h2 class="post-title">{{ listing.address }}</h2>
-          <h3 class="post-subtitle">{{ post.price }}</h3>
+      <div class="listing_previews">
+        <a href="{{ url_for('listing', listing_id=listing.id) }}">
+          <h2 class="listing-address">{{ listing.address }}</h2>
+          <h3 class="listing-price">{{ listing.price }}</h3>
         </a>
         <p class="post-meta">
           Rooms
-          <a href="#">{{listing.rooms}}</a>
+          <a href="#">{{ listing.rooms }}</a>
           Baths
-          <a href="#">{{listing.baths}}</a>
+          <a href="#">{{ listing.baths }}</a>
         </p>
 
       </div>
@@ -46,7 +46,7 @@
 
       <!-- Pager-->
       <div class="d-flex justify-content-end mb-4">
-        <a class="btn btn-secondary text-uppercase" href="#!">Older Posts →</a>
+        <a class="btn btn-secondary text-uppercase" href="#!">More listings →</a>
       </div>
     </div>
   </div>

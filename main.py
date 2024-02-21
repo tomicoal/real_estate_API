@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, IntegerField, SelectField
 from wtforms.validators import DataRequired, URL
+from flask_ckeditor import CKEditor, CKEditorField
 # from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 
 app = Flask(__name__)
@@ -16,6 +17,7 @@ db = SQLAlchemy(app)
 # db.init_app(app)
 app.app_context().push()
 Bootstrap5(app)
+ckeditor = CKEditor(app)
 
 
 # #CREATE TABLE IN DB
@@ -26,12 +28,13 @@ class Listings(db.Model):
     rooms = db.Column(db.Integer, nullable=False)
     baths = db.Column(db.Integer, nullable=False)
     link = db.Column(db.String(250), unique=True, nullable=False)
+    description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Integer, nullable=False)
 
 
 # Line below only required once, when creating DB.
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
 
 # Already created to initialize DB so we comment out
@@ -53,6 +56,7 @@ class CreateListingForm(FlaskForm):
     type = SelectField("Type", choices=[("flat", "Flat"), ("house", "House")], validators=[DataRequired()])
     rooms = IntegerField("Rooms", validators=[DataRequired()])
     baths = IntegerField("Baths", validators=[DataRequired()])
+    description = CKEditorField("Listing description", validators=[DataRequired()])
     link = StringField("URL", validators=[DataRequired(), URL()])
     price = IntegerField("Price", validators=[DataRequired()])
     submit = SubmitField("Submit Listing")
@@ -60,7 +64,7 @@ class CreateListingForm(FlaskForm):
 
 @app.route("/")
 def home():
-    result = db.session.execute(db.select(Listings).order_by(Listings.price))
+    result = db.session.execute(db.select(Listings))
     all_listings = result.scalars().all()
     return render_template("index.html", listings=all_listings)
 
@@ -74,6 +78,7 @@ def add_listing():
             type=form.type.data,
             rooms=form.rooms.data,
             baths=form.baths.data,
+            description=form.description.data,
             link=form.link.data,
             price=form.price.data)
         db.session.add(listing)
