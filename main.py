@@ -57,6 +57,7 @@ class CreateListingForm(FlaskForm):
     submit = SubmitField("Submit Listing")
 
 
+
 @app.route("/")
 def home():
     result = db.session.execute(db.select(Listings).order_by(Listings.price))
@@ -67,10 +68,20 @@ def home():
     return render_template("index.html", listings=all_listings)
 
 
-@app.route("/add")
+@app.route("/add", methods=["GET", "POST"])
 def add():
+    form = CreateListingForm()
+    if form.validate_on_submit():
+        address = form.address.data
+        type = form.type.data
+        rooms = form.rooms.data
+        baths = form.baths.data
+        link = form.link.data
+        price = form.price.data
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template("add.html", form=form)
 
-    return render_template("add.html")
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5004)
+    app.run(debug=True, port=5005)

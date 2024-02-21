@@ -1,12 +1,56 @@
-{% extends "bootstrap/base.html" %}
-{% block title %}This is an example page{% endblock %}
+{% extends 'bootstrap/base.html' %}
+{% block styles %}
+<!-- Page Header-->
+<header
+  class="masthead"
+>
 
-{% block navbar %}
-<div class="navbar navbar-fixed-top">
-  <!-- ... -->
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>Homes list</h1>
+          <span class="subheading">A list</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      <!-- Post preview-->
+      {% for listings in all_listings %}
+      <div class="post-preview">
+        <a href="{{ url_for('show_post', post_id=post.id) }}">
+          <h2 class="post-title">{{ listing.address }}</h2>
+          <h3 class="post-subtitle">{{ post.price }}</h3>
+        </a>
+        <p class="post-meta">
+          Rooms
+          <a href="#">{{listing.rooms}}</a>
+          Baths
+          <a href="#">{{listing.baths}}</a>
+        </p>
+
+      </div>
+      <!-- Divider-->
+      <hr class="my-4" />
+      {% endfor %}
+
+      <!-- New Post -->
+      <div class="d-flex justify-content-end mb-4">
+      <!-- TODO: Adding new posts -->
+
+      </div>
+
+      <!-- Pager-->
+      <div class="d-flex justify-content-end mb-4">
+        <a class="btn btn-secondary text-uppercase" href="#!">Older Posts →</a>
+      </div>
+    </div>
+  </div>
 </div>
-{% endblock %}
 
-{% block content %}
-  <h1>Hello, Bootstrap</h1>
 {% endblock %}
