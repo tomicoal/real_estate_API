@@ -25,4 +25,6 @@ class Listings(db.Model):
 
 
 # Line below only required once, when creating DB.
-db.create_all()
+# with app.app_context():
+#     db.create_all()
+
