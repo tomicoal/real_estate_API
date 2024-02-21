@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, url_for, redirect, send_from_directory
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, IntegerField, SelectField
+from wtforms.validators import DataRequired, URL
 # from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 
 app = Flask(__name__)
@@ -11,6 +15,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 # db.init_app(app)
 app.app_context().push()
+Bootstrap(app)
 
 
 # #CREATE TABLE IN DB
@@ -42,14 +47,30 @@ class Listings(db.Model):
 # db.session.commit()
 
 
+class CreateListingForm(FlaskForm):
+    address = StringField("Address", validators=[DataRequired()])
+    type = SelectField("Type", choices=[("flat", "Flat"), ("house", "House")], validators=[DataRequired()])
+    rooms = IntegerField("Rooms", validators=[DataRequired()])
+    baths = IntegerField("Baths", validators=[DataRequired()])
+    link = StringField("Blog content", validators=[DataRequired(), URL()])
+    price = IntegerField("Price", validators=[DataRequired()])
+    submit = SubmitField("Submit Listing")
+
+
 @app.route("/")
 def home():
     result = db.session.execute(db.select(Listings).order_by(Listings.price))
     all_listings = result.scalars().all()
 
-    for i in range(len(all_listings)):
-        all_listings[i].ranking = len(all_listings) - i
-
     db.session.commit()
 
     return render_template("index.html", listings=all_listings)
+
+
+@app.route("/add")
+def add():
+
+    return render_template("add.html")
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5004)
