@@ -28,3 +28,28 @@ class Listings(db.Model):
 # with app.app_context():
 #     db.create_all()
 
+# Already created to initialize DB so we comment out
+# new_listing = Listings(
+#     address="Dagnall Street, SW11",
+#     type="Flat",
+#     rooms=2,
+#     baths=12,
+#     link="https://www.rightmove.co.uk/properties/86714010#/?channel=RES_LET",
+#     price=2000
+# )
+#
+# db.session.add(new_listing)
+# db.session.commit()
+
+
+@app.route("/")
+def home():
+    result = db.session.execute(db.select(Listings).order_by(Listings.price))
+    all_listings = result.scalars().all()
+
+    for i in range(len(all_listings)):
+        all_listings[i].ranking = len(all_listings) - i
+
+    db.session.commit()
+
+    return render_template("index.html", listings=all_listings)
