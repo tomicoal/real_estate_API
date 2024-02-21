@@ -1,44 +1,35 @@
 {% include "header.html" %}
 
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('{{post.img_url}}'">
+<header class="masthead">
 
   <div class="container position-relative px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="listing-address">
           <h1>{{ listing.address }}</h1>
-          <h2 class="price">{{ listing.price }}</h2>
+          <h2 class="price">GBP {{ listing.price }} per calendar month</h2>
           <span class="meta"
             >Rooms
             <a href="#">{{ listing.rooms }}</a>
             Baths
             <a href="#">{{ listing.baths }}</a>
-
           </span>
         </div>
       </div>
     </div>
   </div>
 
-<!-- Post Content -->
-<!--<article>-->
-<!--  <div class="container px-4 px-lg-5">-->
-<!--    <div class="row gx-4 gx-lg-5 justify-content-center">-->
-<!--      <div class="col-md-10 col-lg-8 col-xl-7">-->
-<!--        {{ post.body|safe }}-->
+</header>
 
-<!--        <div class="d-flex justify-content-end mb-4">-->
-<!--        &lt;!&ndash; TODO: Editing posts&ndash;&gt;-->
-<!--          <a-->
-<!--            class="btn btn-primary float-right"-->
-<!--            href=" {{ url_for('edit_post', post_id=post.id) }}"-->
-<!--            >Edit Post</a-->
-<!--          >-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</article>-->
+<article>
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        {{ listing.description|safe }}
+      </div>
+    </div>
+  </div>
+</article>
 
 {% include "footer.html" %}

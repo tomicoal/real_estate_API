@@ -33,8 +33,8 @@ class Listings(db.Model):
 
 
 # Line below only required once, when creating DB.
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 
 # Already created to initialize DB so we comment out
@@ -64,8 +64,8 @@ class CreateListingForm(FlaskForm):
 
 @app.route("/")
 def home():
-    result = db.session.execute(db.select(Listings))
-    all_listings = result.scalars().all()
+    results = db.session.execute(db.select(Listings))
+    all_listings = results.scalars().all()
     return render_template("index.html", listings=all_listings)
 
 
@@ -85,6 +85,13 @@ def add_listing():
         db.session.commit()
         return redirect(url_for('home'))
     return render_template("add.html", form=form)
+
+
+@app.route('/listing/<int:listing_id>')
+def show_post(listing_id):
+    # TODO: Retrieve a BlogPost from the database based on the post_id
+    requested_listing = db.get_or_404(Listings, listing_id)
+    return render_template("listing.html", listing=requested_listing)
 
 
 if __name__ == '__main__':

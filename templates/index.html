@@ -19,9 +19,11 @@
 <div class="container px-4 px-lg-5">
   <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
+              <a> 1 There should be a list here</a>
       <!-- Listing preview-->
       {% for listings in all_listings %}
       <div class="listing_previews">
+        <a>2 There should be a list here</a>
         <a href="{{ url_for('listing', listing_id=listing.id) }}">
           <h2 class="listing-address">{{ listing.address }}</h2>
           <h3 class="listing-price">{{ listing.price }}</h3>
@@ -39,9 +41,13 @@
       {% endfor %}
 
       <!-- New Post -->
-      <div class="d-flex justify-content-end mb-4">
-      <!-- TODO: Adding new posts -->
-
+     <div class="d-flex justify-content-end mb-4">
+      <!-- TODO: Adding new house -->
+        <a
+          class="btn btn-primary float-right"
+          href="{{ url_for('add_listing') }}"
+          >New listing</a
+        >
       </div>
 
       <!-- Pager-->
