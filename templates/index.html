@@ -2,7 +2,7 @@
 <!-- Page Header-->
 <header
   class="masthead"
-  style="background-image: url('../static/assets/img/home-bg.jpg')"
+  style="background-image: url('../static/assets/img/get_all_listings-bg.jpg')"
 >
 
   <div class="container position-relative px-4 px-lg-5">
@@ -10,25 +10,25 @@
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="site-heading">
           <h1>Homes list</h1>
+          <span class="subheading">A Capstone Project by Tomas</span>
         </div>
       </div>
     </div>
   </div>
 </header>
 <!-- Main Content-->
+
 <div class="container px-4 px-lg-5">
   <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
-              <a> 1 There should be a list here</a>
-      <!-- Listing preview-->
-      {% for listings in all_listings %}
-      <div class="listing_previews">
+      {% for listing in all_listings %}
+      <div class="listing-previews">
         <a>2 There should be a list here</a>
         <a href="{{ url_for('listing', listing_id=listing.id) }}">
           <h2 class="listing-address">{{ listing.address }}</h2>
           <h3 class="listing-price">{{ listing.price }}</h3>
         </a>
-        <p class="post-meta">
+        <p class="listing-meta">
           Rooms
           <a href="#">{{ listing.rooms }}</a>
           Baths
@@ -39,6 +39,7 @@
       <!-- Divider-->
       <hr class="my-4" />
       {% endfor %}
+
 
       <!-- New Post -->
      <div class="d-flex justify-content-end mb-4">
