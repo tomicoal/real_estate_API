@@ -53,8 +53,8 @@ class CreateListingForm(FlaskForm):
 @app.route("/")
 def get_all_listings():
     results = db.session.execute(db.select(Listings))
-    all_listings = results.scalars().all()
-    return render_template("index.html", listing=all_listings)
+    listings = results.scalars().all()
+    return render_template("index.html", all_listings=listings)
 
 
 @app.route("/add", methods=["GET", "POST"])
@@ -76,7 +76,7 @@ def add_listing():
 
 
 @app.route("/listing/<int:listing_id>")
-def show_post(listing_id):
+def show_listing(listing_id):
     # TODO: Retrieve a BlogPost from the database based on the post_id
     requested_listing = db.get_or_404(Listings, listing_id)
     return render_template("listing.html", listing=requested_listing)
