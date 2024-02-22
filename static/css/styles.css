@@ -10754,6 +10754,8 @@ header.masthead .listing-heading .meta a {
   font-size: 2.25rem;
   font-weight: 700;
   margin-top: 3.75rem;
+  text-align: center;
+
 }
 
 .caption {
@@ -10794,5 +10796,10 @@ header.masthead .listing-heading .meta a {
   .listing-preview > a > .listing-title {
     font-size: 2.25rem;
   }
+}
+.listing-description {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
