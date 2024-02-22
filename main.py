@@ -102,7 +102,7 @@ def add_listing():
             description=form.description.data,
             link=form.link.data,
             price=form.price.data,
-            image_url=f"static/assets/img/house_images/{form.address.data}")
+            image_url=f"../static/assets/img/house_images/{image_file.filename}")
         db.session.add(listing)
         db.session.commit()
 
