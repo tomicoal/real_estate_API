@@ -14,9 +14,11 @@
           {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
 
         </div>
+
       </div>
+      <a class="btn btn-primary float-right" href="{{ url_for('get_all_listings') }}">Home</a>
     </div>
-    <a class="btn btn-primary float-right" href="{{ url_for('get_all_listings') }}">Home</a>
+
   </main>
 
 {% include "footer.html" %}
