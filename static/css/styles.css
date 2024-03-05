@@ -1,0 +1,52 @@
+header.masthead {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-top: calc(8rem + 57px);
+  padding-bottom: 8rem;
+  background: no-repeat center center;
+  background-color: #6c757d;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+
+.section-heading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 3.75rem;
+}
+
+.caption {
+  font-size: 0.875rem;
+  font-style: italic;
+  display: block;
+  margin: 0;
+  padding: 0.625rem;
+  text-align: center;
+}
+
+.listing-preview > a {
+  color: #212529;
+}
+.listing-preview > a:focus, .listing-preview > a:hover {
+  text-decoration: none;
+  color: #0085A1;
+}
+.listing-preview > a > .listing-title {
+  font-size: 1.875rem;
+  margin-top: 1.875rem;
+  margin-bottom: 0.625rem;
+}
+.listing-preview > a > .listing-subtitle {
+  font-weight: 300;
+  margin-bottom: 0.625rem;
+}
+.listing-preview > .listing-meta {
+  font-size: 1.125rem;
+  font-style: italic;
+  margin-top: 0;
+  color: #6c757d;
+}
+.listing-preview > .listing-meta > a {
+  text-decoration: none;
+}
