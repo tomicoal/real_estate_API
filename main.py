@@ -23,7 +23,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
 app.config['ALLOWED_EXTENSIONS'] = ALLOWED_EXTENSIONS
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-Bootstrap5(app)
+bootstrap = Bootstrap5(app)
 ckeditor = CKEditor(app)
 
 # #CONNECT TO DB
@@ -31,8 +31,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///listings.db'
 db = SQLAlchemy()
 db.init_app(app)
 app.app_context().push()
-
-
 
 
 # #CREATE TABLE IN DB
