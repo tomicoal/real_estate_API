@@ -24,9 +24,12 @@
 <article>
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 mt-0 justify-content-center">
-      <p class="section-heading">What we know about the listing</p>
+      <p class="section-heading text-center">What we know about the listing</p>
       <div class="col-md-10 col-lg-8 col-xl-7 listing-description">
         {{ listing.description|safe }}
+      </div>
+      <div class="col-md-10 col-lg-8 col-xl-7 text-center justify-content-center p-5">
+        <a href='{{ listing.link }}' class="btn btn-primary btn-lg" role="button" aria-pressed="true">Let's see it</a>
       </div>
     </div>
   </div>
