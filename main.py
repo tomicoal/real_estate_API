@@ -4,7 +4,7 @@ import flask
 from flask import Flask, render_template, request, url_for, redirect, send_from_directory
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
-from flask_bootstrap import Bootstrap
+# from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, IntegerField, SelectField, FileField
@@ -25,7 +25,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
 app.config['ALLOWED_EXTENSIONS'] = ALLOWED_EXTENSIONS
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-bootstrap = Bootstrap(app)
+# bootstrap = Bootstrap()
 ckeditor = CKEditor(app)
 
 # #CONNECT TO DB
@@ -112,7 +112,6 @@ def add_listing():
 
 @app.route("/listing/<int:listing_id>")
 def show_listing(listing_id):
-    # TODO: Retrieve a BlogPost from the database based on the post_id
     requested_listing = db.get_or_404(Listings, listing_id)
     return render_template("listing.html", listing=requested_listing)
 

@@ -22,19 +22,19 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         {% for item in all_listings %}
-        <div class="listing-preview">
-          <a href="{{ url_for('show_listing', listing_id=item.id) }}">
-            <h2 class="listing-address">{{ item.address }}</h2>
-            <h3 class="listing-price">£{{ item.price }} per month</h3>
-          </a>
-          <p class="listing-meta">
-            <a>Rooms: {{item.rooms}}</a>
-            <a>Baths: {{item.baths}}</a>
-          </p>
+          <div class="listing-preview">
+            <a href="{{ url_for('show_listing', listing_id=item.id) }}">
+              <h2 class="listing-address">{{ item.address }}</h2>
+              <h3 class="listing-price">£{{ item.price }} per month</h3>
+            </a>
+            <p class="listing-meta">
+              <a>Rooms: {{item.rooms}}</a>
+              <a>Baths: {{item.baths}}</a>
+            </p>
 
-        </div>
-        <!-- Divider-->
-        <hr class="my-4" />
+          </div>
+          <!-- Divider-->
+          <hr class="my-4" />
         {% endfor %}
 
         <!-- New Post -->
