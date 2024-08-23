@@ -1,54 +1,57 @@
 {% include "header.html" %}
 <!-- Page Header-->
 <header
-  class="masthead"
-  style="background-image: url('../static/assets/img/all_listings-bg.jpg')"
+    class="masthead"
+    style="background-image: url('../static/assets/img/all_listings-bg.jpg')"
 >
-
-  <div class="container position-relative px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        <div class="site-heading">
-          <h1>Homes list</h1>
-          <span class="subheading">A Capstone Project by Tomas</span>
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Homes list</h1>
+                    <span class="subheading">A Capstone Project by Tomas</span>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </header>
 <!-- Main Content-->
 
-  <div class="container px-4 px-lg-5">
+<div id="alllisting-container" class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        {% for item in all_listings %}
-          <div class="listing-preview">
-            <a href="{{ url_for('show_listing', listing_id=item.id) }}">
-              <h2 class="listing-address">{{ item.address }}</h2>
-              <h3 class="listing-price">£{{ item.price }} per month</h3>
-            </a>
-            <p class="listing-meta">
-              <a>Rooms: {{item.rooms}}</a>
-              <a>Baths: {{item.baths}}</a>
-            </p>
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            {% for item in all_listings %}
+            <div class="listing-preview">
+                <a href="{{ url_for('show_listing', listing_id=item.id) }}">
+                    <h2 class="listing-address">{{ item.address }}</h2>
+                    <h3 class="listing-price">£{{ item.price }} per month</h3>
+                </a>
+                <p class="listing-meta">
+                    <a>Rooms: {{item.rooms}}</a>
+                    <a>Baths: {{item.baths}}</a>
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            {% endfor %}
 
-          </div>
-          <!-- Divider-->
-          <hr class="my-4" />
-        {% endfor %}
+            <!-- New Post -->
+            <div class="d-flex justify-content-center mb-4">
+                <a
+                    class="btn btn-primary float-right"
+                    href="{{ url_for('add_listing') }}"
+                    >New listing</a
+                >
+            </div>
 
-        <!-- New Post -->
-       <div class="d-flex justify-content-end mb-4">
-
-          <a class="btn btn-primary float-right" href="{{ url_for('add_listing') }}">New listing</a>
+            <!-- Pager-->
+            <div class="d-flex justify-content-center mb-4">
+                <a class="btn btn-secondary text-uppercase" href="#"
+                    >More listings →</a
+                >
+            </div>
         </div>
-
-        <!-- Pager-->
-        <div class="d-flex justify-content-end mb-4">
-          <a class="btn btn-secondary text-uppercase" href="#">More listings →</a>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
 {% include "footer.html" %}
