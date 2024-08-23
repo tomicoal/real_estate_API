@@ -1,38 +1,52 @@
 {% include "header.html" %}
 
 <!-- Page Header-->
-<header class="masthead mb-0" style="background-image: url('{{ listing.image_url }}')">
-
-  <div class="container position-relative px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        <div class="listing-heading">
-          <h1>{{ listing.address }}</h1>
-          <h2 class="price">GBP {{ listing.price }} per calendar month</h2>
-          <span class="meta"
-            >Rooms
-            <a>{{ listing.rooms }}</a>
-            Baths
-            <a>{{ listing.baths}}</a>
-          </span>
+<header
+    class="masthead mb-0"
+    style="background-image: url('{{ listing.image_url }}')"
+>
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="listing-heading">
+                    <h1>{{ listing.address }}</h1>
+                    <h2 class="price">
+                        GBP {{ listing.price }} per calendar month
+                    </h2>
+                    <span class="meta"
+                        >Rooms
+                        <a>{{ listing.rooms }}</a>
+                        Baths
+                        <a>{{ listing.baths}}</a>
+                    </span>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </header>
 
 <article>
-  <div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 mt-0 justify-content-center">
-      <p class="section-heading text-center">What we know about the listing</p>
-      <div class="col-md-10 col-lg-8 col-xl-7 listing-description">
-        {{ listing.description|safe }}
-      </div>
-      <div class="col-md-10 col-lg-8 col-xl-7 text-center justify-content-center p-3">
-        <a href='{{ listing.link }}' class="btn btn-secondary btn-lg" role="button" aria-pressed="true">Let's see it</a>
-      </div>
+    <div id="listing-container" class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 mt-0 justify-content-center">
+            <p class="section-heading text-center">
+                What we know about the listing
+            </p>
+            <div class="col-md-10 col-lg-8 col-xl-7 listing-description">
+                {{ listing.description|safe }}
+            </div>
+            <div
+                class="col-md-10 col-lg-8 col-xl-7 text-center justify-content-center p-3"
+            >
+                <a
+                    href="{{ listing.link }}"
+                    class="btn btn-secondary btn-lg"
+                    role="button"
+                    aria-pressed="true"
+                    >Let's see it</a
+                >
+            </div>
+        </div>
     </div>
-  </div>
 </article>
 
 {% include "footer.html" %}

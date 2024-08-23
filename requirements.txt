@@ -1,7 +1,5 @@
 flask
 werkzeug
-werkzeug
-flask_bootstrap
 flask_sqlalchemy
 flask_wtf
 wtforms

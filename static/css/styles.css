@@ -4,7 +4,6 @@ body {
 
 header.masthead {
     position: relative;
-    margin-bottom: 1rem;
     padding-top: calc(8rem + 57px);
     padding-bottom: 8rem;
     background: no-repeat center center;
@@ -97,12 +96,6 @@ header.masthead .listing-heading .meta a {
     }
 }
 
-.section-heading {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-top: 3.75rem;
-}
-
 .caption {
     font-size: 0.875rem;
     font-style: italic;
@@ -145,7 +138,42 @@ header.masthead .listing-heading .meta a {
     text-decoration: none;
 }
 
+#masthead_div {
+    border-radius: 2px;
+}
+
 #alllisting-container {
     border-radius: 2px;
-    padding: 10px;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+#listing-container {
+    border-radius: 2px;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+#home_btn {
+    margin-top: 1rem;
+}
+
+.cke_editable {
+    text-align: center;
+}
+
+#nav_bar_div {
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+#footer_div {
+    margin-top: 1rem;
+    padding-top: 5px;
+    border-radius: 5px;
+    background-color: #ffffff;
 }
