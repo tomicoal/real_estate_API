@@ -6,7 +6,7 @@
 Imports necessary libraries and modules.
 Configures the Flask app, including secret key, database URI, and upload folder settings.
 
-###Database Setup:
+###Database Setup: 
 Connects to a SQLite database named listings.db.
 Defines a Listings model for storing real estate listings with fields like address, type, rooms, baths, link, description, price, and image URL.
 Creates the database table if it doesn’t exist.
